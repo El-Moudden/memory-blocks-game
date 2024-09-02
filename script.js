@@ -1,7 +1,20 @@
+let savedBtn = document.querySelector(".btn");
+let savedBtnSpan = document.querySelector(".btn span");
+let savedBody = document.querySelector("body");
 document.querySelector(".btn span").onclick = function(){
     let name = prompt("please enter your name")
+
+    if(name == "" || name== null){
+        alert("Please enter your name")
+        return false;  // prevent the page from loading when the user enters nothing as the name
+    }
     document.querySelector(".header p").innerHTML = `MRS : ${name}`
-    document.querySelector(".btn").remove()
+   
+   
+    savedBtn.remove()
+    
+
+    console.log(name)
     
 
 }
@@ -66,6 +79,49 @@ function noClick(){
 }
 let tries  = 0 
 let trueTries =0
+
+function endGame(){
+    if(trueTries == 8){
+
+        const fragment = document.createDocumentFragment(); // Create a document fragment
+
+        const newDiv = document.createElement("div"); // Create a new <p> element
+        newDiv.classList.add("btn"); // Add class to <p> element
+
+        const newSpan = document.createElement("p"); // Create a new <span> element
+        newSpan.classList.add("btnSpan"); // Add class to <span> element
+
+        const ik = document.createElement("div")
+        ik.classList.add("ik")
+
+        const icon = document.createElement("i"); // Create a new <i> element for the icon
+        icon.classList.add("fa-solid", "fa-arrow-rotate-right"); // Add Font Awesome classes for the icon
+
+        const newContent = document.createTextNode("YOU DID IT"); // Create a text node
+
+        
+        newSpan.appendChild(newContent); // Append the text node to the <span>
+        ik.appendChild(icon)
+        newDiv.appendChild(newSpan); // Append the <span> to the <p>
+        newDiv.appendChild(ik); // Append the icon to the <span>
+
+    // Append the <p> element to the document fragment
+    
+        fragment.appendChild(newDiv);
+
+        document.body.appendChild(fragment); // Append the document fragment to the body
+
+
+        ik.addEventListener("click",function(){
+            location.reload() // Reload the page when the user clicks the icon
+        } )
+
+    
+} }
+
+
+
+
 function matchedblocks(block1,block2) {
     
     if(block1.dataset.numbers === block2.dataset.numbers){
@@ -78,12 +134,13 @@ function matchedblocks(block1,block2) {
 
         tries ++
         trueTries++
+        endGame()
     }else {
 
         setTimeout(()=>{
-
+        
             block1.classList.remove("flipped")
-        block2.classList.remove("flipped")
+            block2.classList.remove("flipped")
 
         },1000)
 
