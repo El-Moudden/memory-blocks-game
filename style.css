@@ -102,8 +102,9 @@ body {
     font-size: 50px;
     width: 400px;
     height: 60px;
-    background: rgb(207, 207, 77);
+    background-color: rgb(207, 207, 77);
     cursor: pointer;
+    
 }
 span:hover {
     background-color: yellow;
@@ -111,5 +112,30 @@ span:hover {
 
 .stopClick {
     pointer-events: none;
+}
+    
+.btnSpan {
+    position: fixed;
+    color: red;
+    z-index: 3;
+    font-size: 50px;
+    width: 400px;
+    height: 60px;
+    background-color: yellow;
+    cursor: pointer;
+    
+}
+
+.fa-arrow-rotate-right {
+    font-size: 60px;
+    background-color: yellow;
+    color: blue;
+    margin-top: 150px;
+    border-radius: 10px;
+    cursor: pointer;
+    
+}
+.fa-arrow-rotate-right:hover {
+    scale: 1.2;
 }
     
